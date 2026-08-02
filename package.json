@@ -1,0 +1,17 @@
+{
+  "name": "eufy-c210-lock-test-working",
+  "version": "1.0.0",
+  "description": "Minimal reproduction + diagnostic showing that a eufy Smart Lock C210 (T8502) can be locked and unlocked via eufy-security-client, and why many setups think it can't.",
+  "main": "c210-lock-test.js",
+  "scripts": {
+    "read": "node c210-lock-test.js",
+    "toggle": "node c210-lock-test.js toggle",
+    "lock": "node c210-lock-test.js lock",
+    "unlock": "node c210-lock-test.js unlock"
+  },
+  "keywords": ["eufy", "c210", "t8502", "smart-lock", "eufy-security-client", "home-assistant"],
+  "license": "Unlicense",
+  "dependencies": {
+    "eufy-security-client": "^4.1.1-1"
+  }
+}

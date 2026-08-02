@@ -1,0 +1,13 @@
+creds.json
+persist/
+code.txt
+captcha.html
+node_modules/
+package-lock.json
+persistent.json
+persist*/
+*.session
+
+# drafts of the comment to post - local working files, not project content
+ISSUE-COMMENT.md
+COMMENT-SHORT.md
