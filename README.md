@@ -167,7 +167,7 @@ serials from any output you paste.
 
 ## Gotchas
 
-All seven of them, each hit for real, are written up in **[KNOWN-ISSUES.md](KNOWN-ISSUES.md)**.
+All eight of them, each hit for real, are written up in **[KNOWN-ISSUES.md](KNOWN-ISSUES.md)**.
 The ones most likely to cost you an afternoon:
 
 1. **The error message is ambiguous** — one string, two very different causes (§1).
@@ -180,6 +180,7 @@ The ones most likely to cost you an afternoon:
 6. **Via `eufy-security-ws`:** `lockDevice` is gated on `schemaVersion <= 12` and raises
    a *different* error above that — rule it out separately (§6).
 7. **This is cloud control, not local** (§7).
+8. **The library itself is deprecated upstream** - the big one (§8).
 
 ## Scope / honesty
 
