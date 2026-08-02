@@ -18,10 +18,14 @@ places**:
 | 1 | `!device.hasProperty(PropertyName.DeviceLocked)` | the device has no lock property — often because its `device_type` isn't in the library's table at all |
 | 2 | the final `else` after the device-type branches | no lock command is implemented for this device type |
 
-Everyone reads it as #2. For the T8502 that's provably wrong: we extracted the published
-tarballs for **3.2.0, 3.5.0, 3.7.2, 3.8.0, 4.0.0, 4.1.1, 4.2.0** and `isLockWifiT8502()`
-appears in `lockDevice()`'s branch list in **every one**, including 3.2.0 — the version
-cited in most failure reports.
+Everyone reads it as #2. For the T8502 that's provably wrong. Bisecting the published
+tarballs, `isLockWifiT8502()` first appears in `lockDevice()` in **3.0.0 (published
+2024-03-03**, the day issue #291 closed) and is in every release since — 3.2.0, 3.5.0,
+3.7.2, 3.8.0, 4.0.0, 4.1.1, 4.2.0. It is absent in 2.9.1 (2023-11-04).
+
+**Anything 3.0.0 or newer already has the lock command path**, including the 3.2.0 cited
+in failure reports. Also note "C210" names two eufy products: PRs #754/#811 add preset
+support for the **IndoorCam C210** pan-and-tilt camera, not this lock.
 
 **So check #1.** `hasProperty()` → `getPropertiesMetadata()` →
 `DeviceProperties[getDeviceType()]`. An unmapped `device_type` returns an **empty**

@@ -47,10 +47,18 @@ separate places**:
 
 Cause 2 is what everyone assumes when they read the message: *the library has no
 support for my lock.* For the T8502 specifically, **that assumption is wrong.** We
-checked published versions **3.2.0, 3.5.0, 3.7.2, 3.8.0, 4.0.0, 4.1.1 and 4.2.0** — the
-`isLockWifiT8502()` branch is present in `lockDevice()` in **every one of them**,
-including 3.2.0, the version most failure reports cite. Support has been there the
-whole time.
+bisected the published tarballs: the `isLockWifiT8502()` branch first appears in
+`lockDevice()` in **version 3.0.0, published 2024-03-03** — the same day the T8502
+support request (issue #291) was closed — and it is present in every release since
+(3.2.0, 3.5.0, 3.7.2, 3.8.0, 4.0.0, 4.1.1, 4.2.0). It is absent in 2.9.1 (2023-11-04).
+
+**So anything from 3.0.0 onward already has the lock command path**, including the
+3.2.0 that failure reports cite. Support was not the missing piece.
+
+(Careful reading changelogs here: "C210" is two different eufy products. PRs #754 and
+#811 add *preset* support for the **IndoorCam C210** (`INDOOR_PT_CAMERA_C210`), a
+pan-and-tilt camera — nothing to do with the Smart Lock C210. The lock's own request is
+issue #291.)
 
 Which leaves cause 1. And cause 1 has a mechanism worth checking:
 
