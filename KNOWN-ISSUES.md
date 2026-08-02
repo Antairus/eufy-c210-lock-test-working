@@ -123,3 +123,25 @@ Commands authenticate through eufy's servers. Fine for convenience and dashboard
 would not make it the only actuator in the trust path of a front door — a Z-Wave or
 Zigbee deadbolt keeps the whole chain inside your house. Also, this is an unofficial
 client: eufy can change something and break it at any time.
+
+---
+
+## 8. The library itself is deprecated (the biggest one)
+
+`eufy-security-client`'s README carries a deprecation notice: eufy is moving to the
+"Eufy Mega" backend and **has already started removing the legacy APIs this library
+uses.** Per the author, remaining functionality "may stop working without warning," and
+when the legacy API is fully shut down the library stops working permanently.
+
+Nothing in this repo is wrong because of that - it all works today - but plan
+accordingly:
+
+- Do not put this in the trust path of anything that matters. Keep a key.
+- Whatever you build on it should fail loudly and visibly, never silently report
+  success. (Ours reports "the bolt did not move - use the key.")
+- For durable software control of a lock, pick hardware that does not depend on a
+  vendor cloud: Z-Wave, Zigbee, or Matter.
+
+Worth reading their README before you build anything on this - which, in the interest
+of honesty, is advice earned the hard way: this whole repo was built before that notice
+was read.

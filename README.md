@@ -1,5 +1,19 @@
 # eufy C210 (T8502): lock/unlock works — and why so many people think it doesn't
 
+> ## Heads up: the library this depends on is deprecated
+>
+> `eufy-security-client`'s own README now carries a deprecation notice: eufy is
+> migrating to their "Eufy Mega" platform and **has already begun removing the legacy
+> APIs this library is built on.** Functionality "may stop working without warning,"
+> and once the legacy API is fully retired the library stops functioning - the author
+> is explicit that no patching changes that. A replacement integration built on the new
+> backend is in development.
+>
+> So: everything below is accurate and works today. Treat it as a stopgap, not
+> infrastructure. If you want a lock that software controls durably, use one that does
+> not depend on a vendor cloud staying alive - Z-Wave, Zigbee, or Matter.
+
+
 **TL;DR — a Smart Lock C210 (T8502) locks and unlocks fine through
 `eufy-security-client`.** Verified 2026-08-02, both directions, bolt physically
 observed, `locked` and `lockStatus` property-change events received about two seconds
